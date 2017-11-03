@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <!-- mysql连接驱动jar包 -->
+    <classPathEntry location="D:\maven\repository\mysql\mysql-connector-java\5.1.37\mysql-connector-java-5.1.37.jar" />
+    <context id="DB2Tables" targetRuntime="MyBatis3" defaultModelType="flat">
+        
+        <property name="javaFileEncoding" value="UTF-8" />
+	    <property name="beginningDelimiter" value="`" />
+	    <property name="endingDelimiter" value="`" />
+        
+        <!-- 生成domain带数据库注释组件 -->
+        <plugin type="com.arlen.generator.plugin.DBColumnCommentPlugin" />
+        <!-- 生成domain带字典项填充注解组件 -->
+        <plugin type="com.arlen.generator.plugin.DictionaryAnnotationPlugin" />
+        <!-- 生成分页查询组件 -->
+        <plugin type="com.arlen.generator.plugin.PagePlugin" />
+        <!-- 生成批量操作组件 -->
+        <plugin type="com.arlen.generator.plugin.BatchPlugin" />
+        <plugin type="com.arlen.generator.plugin.JoinPlugin">
+            <property name="criteriaSuffix" value="Query" />
+        </plugin>
+        <!-- 生成的*Mapper文件重命名为I*Dao -->
+        <plugin type="com.arlen.generator.plugin.RenameClientClassPlugin">
+	        <property name="searchRegex" value="Mapper" />
+	        <property name="replaceString" value="Dao" />
+	        <property name="prefix" value="I" />
+        </plugin>
+        <!-- 生成的*Example类重命名为*Query组件 -->
+        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+            <property name="searchString" value="Example" />
+            <property name="replaceString" value="Query" />
+        </plugin>
+        <!-- Domain中生成toString方法组件 -->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+        
+        <!-- 自动生成组件的注释是否要生成，默认不生成，都是没用的 -->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+        
+        <!-- jdbc连接 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+            connectionURL="jdbc:mysql://192.168.226.72:3306/db_all_new" 
+            userId="root"
+            password="123456" 
+            />
+            
+        <!-- java类型解析 -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="true" />
+            <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer true，把JDBC DECIMAL 和 NUMERIC 类型解析为java.math.BigDecimal -->
+        </javaTypeResolver>
+
+        <!-- domain生成相关配置 -->
+        <javaModelGenerator targetPackage="com.hongkun.order.domain"
+            targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <!-- set的时候是否去除尾部空格 -->
+            <property name="trimStrings" value="true" />
+            <!-- 要继承的根Domain -->
+            <property name="rootClass" value="com.hongkun.common.domain.AbstractDomain"/>
+        </javaModelGenerator>
+
+        <!-- sql文件生成相关配置 -->
+        <sqlMapGenerator targetPackage="reportorder-gen" targetProject="./src/main/resources/mybatis">
+          <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+		<!-- dao文件生成相关配置 -->
+		<javaClientGenerator type="XMLMAPPER"
+          targetPackage="com.hongkun.order.dao" targetProject="./src/main/java">
+          <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+        
+        <!-- 要生成的表配置 -->
+		<table tableName="ord_platform_order" alias="opo" domainObjectName="PlatformOrder">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true" />
+        </table>
+        
+        
+        <!-- <table tableName="ord_client_order" alias="oco" domainObjectName="ClientOrder">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true" />
+        </table>
+        <table tableName="ord_platform_order" alias="opo" domainObjectName="PlatformOrder">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true" />
+        </table>
+        <table tableName="ord_supplier_order" alias="oso" domainObjectName="SupplierOrder">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true" />
+        </table>
+        <table tableName="ord_order_classify" alias="ocf" domainObjectName="OrderClassify">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true" />
+        </table>
+        <table tableName="ord_order_cycle" alias="ocl" domainObjectName="OrderCycle">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true" />
+        </table>
+        <table tableName="ord_order_logistics_inland" alias="oli" domainObjectName="OrderLogisticsInland">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true" />
+        </table>
+        <table tableName="ord_order_logistics_foreign" alias="olf" domainObjectName="OrderLogisticsForeign">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true" />
+        </table>
+        <table tableName="ord_order_declaration" alias="ood" domainObjectName="OrderDeclaration">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true" />
+        </table>
+        <table tableName="ord_order_package" alias="oop" domainObjectName="OrderPackage">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true" />
+        </table>
+        <table tableName="ord_order_classify_product" alias="ocp" domainObjectName="OrderClassifyProduct">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true" />
+        </table>
+        <table tableName="ord_order_product" alias="opt" domainObjectName="OrderProduct">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true" />
+        </table>
+        <table tableName="ord_order_contact" alias="ooc" domainObjectName="OrderContact">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true" />
+        </table>
+        <table tableName="ord_order_logistics_status" alias="ols" domainObjectName="OrderLogisticsStatus">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true" />
+        </table>
+        <table tableName="ord_base_snapshot" alias="obs" domainObjectName="BaseSnapshot">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true" />
+        </table>
+        <table tableName="ord_base_attachment" alias="oba" domainObjectName="BaseAttachment">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true" />
+        </table>
+        <table tableName="ord_base_status_duration" alias="bsd" domainObjectName="BaseStatusDuration">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true" />
+        </table>
+        <table tableName="ord_base_service_log" alias="bsl" domainObjectName="BaseServiceLog">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true" />
+        </table>
+        <table tableName="ord_base_error_operate" alias="beo" domainObjectName="BaseErrorOperate">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true" />
+        </table>
+        <table tableName="ord_order_fee" alias="oof" domainObjectName="OrderFee">
+            <generatedKey column="key" sqlStatement="JDBC" />
+        </table>
+        <table tableName="ord_order_tcca_classify" alias="otc" domainObjectName="OrderTccaClassify">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true" />
+        </table>
+        <table tableName="ord_order_tcca_declare" alias="otd" domainObjectName="OrderTccaDeclare">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true" />
+        </table>
+        <table tableName="ord_order_tcca_draft" alias="ootd" domainObjectName="OrderTccaDraft">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true" />
+        </table>
+        <table tableName="ord_order_tcca_product" alias="oof" domainObjectName="OrderTccaProduct">
+            <generatedKey column="key" sqlStatement="JDBC" />
+        </table>  -->
+        
+    </context>
+</generatorConfiguration>
