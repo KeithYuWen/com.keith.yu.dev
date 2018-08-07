@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.k12.tc.schedule.dao.IScheduleJobRunResultDao" >
+  <resultMap id="BaseResultMap" type="com.k12.tc.schedule.domain.ScheduleJobRunResult" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="job_id" property="jobId" jdbcType="INTEGER" />
+    <result column="run_status" property="runStatus" jdbcType="TINYINT" />
+    <result column="run_time" property="runTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.k12.tc.schedule.domain.ScheduleJobRunResult" extends="BaseResultMap" >
+    <result column="fail_reason" property="failReason" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, job_id, run_status, run_time
+  </sql>
+  <sql id="Blob_Column_List" >
+    fail_reason
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.k12.tc.schedule.domain.ScheduleJobRunResultQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from schedule_job_run_result
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="pageFlag" >
+      limit #{limit,jdbcType=INTEGER} offset #{offset,jdbcType=INTEGER}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.k12.tc.schedule.domain.ScheduleJobRunResultQuery" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from schedule_job_run_result
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="pageFlag" >
+      limit #{limit,jdbcType=INTEGER} offset #{offset,jdbcType=INTEGER}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from schedule_job_run_result
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from schedule_job_run_result
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.k12.tc.schedule.domain.ScheduleJobRunResultQuery" >
+    delete null from schedule_job_run_result
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.k12.tc.schedule.domain.ScheduleJobRunResult" useGeneratedKeys="true" keyProperty="id" >
+    insert into schedule_job_run_result (job_id, run_status, run_time, 
+      fail_reason)
+    values (#{jobId,jdbcType=INTEGER}, #{runStatus,jdbcType=TINYINT}, #{runTime,jdbcType=TIMESTAMP}, 
+      #{failReason,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.k12.tc.schedule.domain.ScheduleJobRunResult" useGeneratedKeys="true" keyProperty="id" >
+    insert into schedule_job_run_result
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="jobId != null" >
+        job_id,
+      </if>
+      <if test="runStatus != null" >
+        run_status,
+      </if>
+      <if test="runTime != null" >
+        run_time,
+      </if>
+      <if test="failReason != null" >
+        fail_reason,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="jobId != null" >
+        #{jobId,jdbcType=INTEGER},
+      </if>
+      <if test="runStatus != null" >
+        #{runStatus,jdbcType=TINYINT},
+      </if>
+      <if test="runTime != null" >
+        #{runTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="failReason != null" >
+        #{failReason,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.k12.tc.schedule.domain.ScheduleJobRunResultQuery" resultType="java.lang.Integer" >
+    select count(*) from schedule_job_run_result
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update schedule_job_run_result
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.jobId != null" >
+        job_id = #{record.jobId,jdbcType=INTEGER},
+      </if>
+      <if test="record.runStatus != null" >
+        run_status = #{record.runStatus,jdbcType=TINYINT},
+      </if>
+      <if test="record.runTime != null" >
+        run_time = #{record.runTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.failReason != null" >
+        fail_reason = #{record.failReason,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update schedule_job_run_result
+    set id = #{record.id,jdbcType=INTEGER},
+      job_id = #{record.jobId,jdbcType=INTEGER},
+      run_status = #{record.runStatus,jdbcType=TINYINT},
+      run_time = #{record.runTime,jdbcType=TIMESTAMP},
+      fail_reason = #{record.failReason,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update schedule_job_run_result
+    set id = #{record.id,jdbcType=INTEGER},
+      job_id = #{record.jobId,jdbcType=INTEGER},
+      run_status = #{record.runStatus,jdbcType=TINYINT},
+      run_time = #{record.runTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.k12.tc.schedule.domain.ScheduleJobRunResult" >
+    update schedule_job_run_result
+    <set >
+      <if test="jobId != null" >
+        job_id = #{jobId,jdbcType=INTEGER},
+      </if>
+      <if test="runStatus != null" >
+        run_status = #{runStatus,jdbcType=TINYINT},
+      </if>
+      <if test="runTime != null" >
+        run_time = #{runTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="failReason != null" >
+        fail_reason = #{failReason,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.k12.tc.schedule.domain.ScheduleJobRunResult" >
+    update schedule_job_run_result
+    set job_id = #{jobId,jdbcType=INTEGER},
+      run_status = #{runStatus,jdbcType=TINYINT},
+      run_time = #{runTime,jdbcType=TIMESTAMP},
+      fail_reason = #{failReason,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.k12.tc.schedule.domain.ScheduleJobRunResult" >
+    update schedule_job_run_result
+    set job_id = #{jobId,jdbcType=INTEGER},
+      run_status = #{runStatus,jdbcType=TINYINT},
+      run_time = #{runTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <insert id="batchInsertSelective" parameterType="java.util.List" >
+    <foreach collection="list" item="item" index="index" separator=";" >
+      insert into schedule_job_run_result
+      <trim prefix="(" suffix=")" suffixOverrides="," >
+        <if test="item.jobId != null" >
+          job_id,
+        </if>
+        <if test="item.runStatus != null" >
+          run_status,
+        </if>
+        <if test="item.runTime != null" >
+          run_time,
+        </if>
+        <if test="item.failReason != null" >
+          fail_reason,
+        </if>
+      </trim>
+      <trim prefix="values (" suffix=")" suffixOverrides="," >
+        <if test="item.jobId != null" >
+          #{item.jobId,jdbcType=INTEGER},
+        </if>
+        <if test="item.runStatus != null" >
+          #{item.runStatus,jdbcType=TINYINT},
+        </if>
+        <if test="item.runTime != null" >
+          #{item.runTime,jdbcType=TIMESTAMP},
+        </if>
+        <if test="item.failReason != null" >
+          #{item.failReason,jdbcType=LONGVARCHAR},
+        </if>
+      </trim>
+    </foreach>
+  </insert>
+  <update id="batchUpdateByPrimaryKeySelective" parameterType="java.util.List" >
+    <foreach collection="list" item="item" index="index" separator=";" >
+      update schedule_job_run_result
+      <set >
+        <if test="item.jobId != null" >
+          job_id = #{item.jobId,jdbcType=INTEGER},
+        </if>
+        <if test="item.runStatus != null" >
+          run_status = #{item.runStatus,jdbcType=TINYINT},
+        </if>
+        <if test="item.runTime != null" >
+          run_time = #{item.runTime,jdbcType=TIMESTAMP},
+        </if>
+        <if test="item.failReason != null" >
+          fail_reason = #{item.failReason,jdbcType=LONGVARCHAR},
+        </if>
+      </set>
+      where id = #{item.id,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <sql id="Join_Where_Clause" >
+    <if test="scheduleJobRunResultQuery != null " >
+      and 
+      <foreach collection="scheduleJobRunResultQuery.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </if>
+  </sql>
+</mapper>

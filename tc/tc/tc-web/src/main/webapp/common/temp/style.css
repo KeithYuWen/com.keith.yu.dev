@@ -1,0 +1,144 @@
+@charset "utf-8";
+/*
+	@Description: Regin Style
+	@Author: 2016.01.11
+*/
+@import url(global.css);
+@import url(form.css);
+
+/*header
+******************************/
+#header{height:50px; background-color:#438eb9;padding:0 10px;zoom:1;}
+#header .logo{padding:0; background:url(../images/logo.jpg) left top no-repeat;display:block;}
+#header .logo h1{width:260px;line-height:50px;text-indent:-9999px;}
+#header .logo h1 a{display:block;}
+#header .topmenu{line-height:50px;}
+#header .topmenu li{float:left;border-right:1px solid #DDD;position: relative;display: block;}
+#header .topmenu li a{display:block;padding:10px 15px;height:30px;line-height:30px;position: relative;}
+#header .topmenu li a:link,#header .topmenu li a:visited{color:#fff;}
+#header .topmenu li a:hover{color:#333}
+#header .topmenu li .gray{ background-color:#555;}
+#header .topmenu li .gray:hover{background-color:#6f6f6f;}
+#header .topmenu li .red{ background-color:#a41f6f;}
+#header .topmenu li .red:hover{ background-color:#c64392;}
+#header .topmenu li .green{ background-color:#1aac72;}
+#header .topmenu li .green:hover{ background-color:#32c68c;}
+#header .topmenu .navUser{border-right:none;}
+#header .topmenu .navUser a{ background-color:#62a8d1;}
+#header .topmenu .navUser a:hover{ background-color:#87c9f0;}
+#header .topmenu li span{display: inline-block;min-width:12px;padding:5px;font-size:11px;font-weight:500;line-height: 1;color: #fff;text-align: center;white-space: nowrap;vertical-align:middle;border-radius: 10px;}
+#header .topmenu .gray span{background-color: #999;}
+#header .topmenu .red span{background-color: #e1563f;}
+#header .topmenu .green span{background-color: #04975d;}
+#header .topmenu i{width:20px;height:20px;display:inline-block;float:left;margin-top:5px;margin-right:5px;line-height: 1;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale}
+#header .topmenu .gray i{background-position:left top;}
+#header .topmenu .red i{background-position:-20px top;}
+#header .topmenu .green i{background-position:-40px top;}
+
+/*local
+******************************/
+#local{height:38px;line-height:38px;background-color:#f5f5f5;border-bottom:1px solid #e5e5e5;}
+#local span{background-color:#FFF;width:197px;border-right:1px solid #ccc;}
+#local .navBread{background-position:-260px 9px;padding:0 15px 0 40px;}
+#local i{margin:0 5px}
+
+/*leftbar
+******************************/
+#leftBar{width:200px;padding:0 0 20px;height:100%;margin-left:-100%;float:left;}
+#leftBar li{width:187px;padding:5px 0 5px 10px;line-height:30px;background-color:#fff;border-bottom:1px solid #e5e5e5;font-size:14px;font-weight:700;display:block;}
+#leftBar li a{display:block;}
+#leftBar li a:hover,#leftBar .on a:link,#leftBar .on a:visited,#leftBar .on a:hover{color:#0b6cbc;}
+#leftBar .icon{width:30px;height:30px;display:block;float:left;margin-right:15px;}
+#leftBar .menu01{background-position:left -28px;}
+#leftBar .menu02{background-position:-30px -28px;}
+#leftBar .menu03{background-position:-60px -28px;}
+#leftBar .menu04{background-position:-90px -28px;}
+#leftBar .menu05{background-position:-120px -28px;}
+#leftBar .menu06{background-position:-150px -28px;}
+#leftBar .menu07{background-position:-180px -28px;}
+#leftBar .menu08{background-position:-210px -28px;}
+#leftBar .menu09{background-position:-240px -28px;}
+#leftBar .menu10{background-position:-270px -28px;}
+#leftBar .menu11{background-position:left -60px;}
+#leftBar .menu12{background-position:-30px -60px;}
+#leftBar .menu13{background-position:-60px -60px;}
+#leftBar .on{ background-image:url(../images/left-on.png); position:relative; background-position:right center; background-repeat:no-repeat;width:190px;}
+#leftBar li a:hover .icon,#leftBar .on .icon{ background-image:url(../images/icon-on.png);}
+#leftBar .submenu{margin-top:-1px;margin-right:3px;padding-bottom:10px;padding-left:40px;background-color:#FFF;border-bottom:1px solid #e5e5e5; position:relative;}
+#leftBar .submenu li{ background-image:none;font-size:12px;padding:5px;line-height:20px;border-bottom:none;width:auto;}
+#leftBar .submenu li .on{ background-image:none;color:#0b6cbc}
+
+/*right site
+******************************/
+#rightSite{ width:100%;min-width:1000px;float:left;height:100%;}
+.rightInfo{margin-left:200px;min-width:1000px;padding:10px;height:100%; }
+
+/*toolbar
+******************************/
+.toolBar{background-color: #f5f5f5;border: 1px solid #e8e8e8;padding: 7px;font-size: 12px;margin-bottom:10px;overflow: hidden;zoom: 1;}
+.toolBar span{line-height: 24px;}
+.toolBar input,.toolBar select{width:10%;height: 20px;margin: 0 10px 0 5px; vertical-align:top}
+.toolBar select{height:25px;}
+.toolBar table td{ text-align:left; clear:both;padding:5px;}
+.toolBar table span{width:35%; text-align:right;display:block;float:left;}
+.toolBar table input,.toolBar table select{width:50%;}
+.toolBar .time{width:20%}
+.toolBar .small{width:35%}
+
+/*table list
+******************************/
+.tableEdit input,.tableEdit select,.auditInfo select{width:50%;}
+
+.tabList{font-size:12px;}
+.tableList{width:100%;margin:0;border-top: 1px solid #E3E3E3;border-left: 1px solid #E3E3E3;margin-bottom:10px;}
+.tableList th,.tableList td{border-bottom: 1px solid #E3E3E3;border-right: 1px solid #E3E3E3;text-align: center;}
+.tableList th{ background-color:#f5f5f5;border-bottom: 1px solid #E3E3E3;border-right: 1px solid #E3E3E3;text-align:right;width:10%}
+.tableList td{text-align:left;}
+.tableList input{width:80%;}
+.tableList .inputMoney{width:15%;margin-right:5px;}
+.tableList .moneyItem{width:30%;margin-top:7px;}
+
+.tableInfo{width:100%;border-left:1px solid #ddd;border-top:1px solid #ddd;}
+.tableInfo th,.tableInfo td{padding:5px;border-right:1px solid #ddd;border-bottom:1px solid #ddd;}
+.tableInfo th{width:10%; background-color:#eef1f2; text-align:center;}
+
+.tableFiling{width:100%;border-left:1px solid #dde7ed;border-top:1px solid #dde7ed;}
+.tableFiling th,.tableFiling td{padding:5px; border-right:1px solid #dde7ed;border-bottom:1px solid #dde7ed; text-align:center;}
+.tableFiling th{ background-color:#eef8ff;}
+.operBox{padding:10px;overflow:hidden;zoom:1;}
+.operBox a{margin-left:10px;}
+.tableEdit{border-top:1px solid #E8E8E8;border-left:1px solid #E8E8E8;margin:15px 0;width:100%;}
+.tableEdit th,.tableEdit td{border-right:1px solid #E8E8E8;border-bottom:1px solid #E8E8E8;padding:3px;}
+.tableEdit th{background-color:#F6F9FA;border-right:1px solid #E8E8E8;text-align:right;width:15%;font-weight:500;}
+
+.tabldAudit td{text-align:center;}
+.tabldAudit .company{text-align:left}
+
+/*audit detial
+******************************/
+.auditInfo td{ text-align:left}
+.auditInfo .contant select{width:15%}
+.auditInfo .contant input{width:30%;}
+.tableResult{width:45%}
+.resTable{width:100%;border-top:1px solid #E3E3E3;border-left:1px solid #E3E3E3;font-size:12px;margin-bottom:15px}
+.resTable th,.resTable td{border-bottom:1px solid #E3E3E3;border-right:1px solid #E3E3E3;padding:8px;text-align:center;}
+.resTable th{background-color:#f5f5f5;height:20px;color:#999;}
+.resTable .tabTit{ text-align:left;}
+.resTable .resInfo {text-align: left;background-color: #f6f6f6;padding:15px;color: #777;}
+.resTable .editTable {border-top: 1px solid #e5efed;border-left: 1px solid #e5efed;width:70%;}
+.resTable .editTable th,.resTable .editTable td{border-bottom:1px solid #e5efed;border-right:1px solid #e5efed;padding:3px 5px;}
+.resTable .editTable th{ background-color:#f0f5f4; text-align:right;font-weight:500;}
+.resTable .editTable td{ background-color:#fff; text-align:left;}
+.resTable .editTable input{width:50%;}
+.resTable .resInfo .btnBox{width:70%;font-size:14px;}
+
+.choseBox{overflow:hidden;zoom:1;}
+.choseBox span{width:15%;display:block;float:left;}
+.choseBox input{width:auto;margin:0 5px }
+
+.newsDetail{width:85%;margin:2% auto;}
+.newsDetail .title{font-size:22px; margin-bottom:20px;text-align:center;}
+.newsDetail .newsInfo p{ text-indent: 28px;margin: 0 0 15px;}
+.paperList a{margin:0 20px;width:40%;display:inline-block;margin:20px 0;}
+.paperList a span{ font-family:Arial, Helvetica, sans-serif;font-size:14px;margin:0 5px}
+.paperList a:hover{ text-decoration:none}

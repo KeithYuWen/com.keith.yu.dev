@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.k12.tc.schedule.dao.IScheduleJobDao" >
+  <resultMap id="BaseResultMap" type="com.k12.tc.schedule.domain.ScheduleJob" >
+    <id column="job_id" property="jobId" jdbcType="INTEGER" />
+    <result column="job_name" property="jobName" jdbcType="VARCHAR" />
+    <result column="alias_name" property="aliasName" jdbcType="VARCHAR" />
+    <result column="job_group" property="jobGroup" jdbcType="VARCHAR" />
+    <result column="job_trigger" property="jobTrigger" jdbcType="VARCHAR" />
+    <result column="job_status" property="jobStatus" jdbcType="CHAR" />
+    <result column="cron_expression" property="cronExpression" jdbcType="VARCHAR" />
+    <result column="is_sync" property="isSync" jdbcType="CHAR" />
+    <result column="service_url" property="serviceUrl" jdbcType="VARCHAR" />
+    <result column="submit_method" property="submitMethod" jdbcType="VARCHAR" />
+    <result column="is_param" property="isParam" jdbcType="CHAR" />
+    <result column="service_param" property="serviceParam" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    t.job_id, t.job_name, t.alias_name, t.job_group, t.job_trigger, t.job_status, t.cron_expression, 
+    t.is_sync, t.service_url, t.submit_method, t.is_param, t.service_param, t.description, 
+    t.update_time, t.create_time
+  </sql>
+  <sql id="BASE_WHERE" >
+    <where >
+       1=1 
+      <if test="jobId != null" >
+        and t.job_id = #{jobId,jdbcType=INTEGER}
+      </if>
+      <if test="jobName != null" >
+        and t.job_name = #{jobName,jdbcType=VARCHAR}
+      </if>
+      <if test="aliasName != null" >
+        and t.alias_name = #{aliasName,jdbcType=VARCHAR}
+      </if>
+      <if test="jobGroup != null" >
+        and t.job_group = #{jobGroup,jdbcType=VARCHAR}
+      </if>
+      <if test="jobTrigger != null" >
+        and t.job_trigger = #{jobTrigger,jdbcType=VARCHAR}
+      </if>
+      <if test="jobStatus != null" >
+        and t.job_status = #{jobStatus,jdbcType=CHAR}
+      </if>
+      <if test="cronExpression != null" >
+        and t.cron_expression = #{cronExpression,jdbcType=VARCHAR}
+      </if>
+      <if test="isSync != null" >
+        and t.is_sync = #{isSync,jdbcType=CHAR}
+      </if>
+      <if test="serviceUrl != null" >
+        and t.service_url = #{serviceUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="submitMethod != null" >
+        and t.submit_method = #{submitMethod,jdbcType=VARCHAR}
+      </if>
+      <if test="isParam != null" >
+        and t.is_param = #{isParam,jdbcType=CHAR}
+      </if>
+      <if test="serviceParam != null" >
+        and t.service_param = #{serviceParam,jdbcType=VARCHAR}
+      </if>
+      <if test="description != null" >
+        and t.description = #{description,jdbcType=VARCHAR}
+      </if>
+      <if test="updateTime != null" >
+        and t.update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="createTime != null" >
+        and t.create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from schedule_job t
+    where t.job_id = #{jobId,jdbcType=INTEGER}
+  </select>
+  <select id="selectBySelective" resultMap="BaseResultMap" parameterType="com.k12.tc.schedule.domain.ScheduleJob" >
+    select 
+    <include refid="Base_Column_List" />
+    from schedule_job t
+    <include refid="BASE_WHERE" />
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from schedule_job
+    where job_id = #{jobId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertSelective" parameterType="com.k12.tc.schedule.domain.ScheduleJob" >
+    insert into schedule_job
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="jobId != null" >
+        job_id,
+      </if>
+      <if test="jobName != null" >
+        job_name,
+      </if>
+      <if test="aliasName != null" >
+        alias_name,
+      </if>
+      <if test="jobGroup != null" >
+        job_group,
+      </if>
+      <if test="jobTrigger != null" >
+        job_trigger,
+      </if>
+      <if test="jobStatus != null" >
+        job_status,
+      </if>
+      <if test="cronExpression != null" >
+        cron_expression,
+      </if>
+      <if test="isSync != null" >
+        is_sync,
+      </if>
+      <if test="serviceUrl != null" >
+        service_url,
+      </if>
+      <if test="submitMethod != null" >
+        submit_method,
+      </if>
+      <if test="isParam != null" >
+        is_param,
+      </if>
+      <if test="serviceParam != null" >
+        service_param,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="jobId != null" >
+        #{jobId,jdbcType=INTEGER},
+      </if>
+      <if test="jobName != null" >
+        #{jobName,jdbcType=VARCHAR},
+      </if>
+      <if test="aliasName != null" >
+        #{aliasName,jdbcType=VARCHAR},
+      </if>
+      <if test="jobGroup != null" >
+        #{jobGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="jobTrigger != null" >
+        #{jobTrigger,jdbcType=VARCHAR},
+      </if>
+      <if test="jobStatus != null" >
+        #{jobStatus,jdbcType=CHAR},
+      </if>
+      <if test="cronExpression != null" >
+        #{cronExpression,jdbcType=VARCHAR},
+      </if>
+      <if test="isSync != null" >
+        #{isSync,jdbcType=CHAR},
+      </if>
+      <if test="serviceUrl != null" >
+        #{serviceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="submitMethod != null" >
+        #{submitMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="isParam != null" >
+        #{isParam,jdbcType=CHAR},
+      </if>
+      <if test="serviceParam != null" >
+        #{serviceParam,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countBySelective" parameterType="com.k12.tc.schedule.domain.ScheduleJob" resultType="java.lang.Integer" >
+    select count(*) from schedule_job t
+    <include refid="BASE_WHERE" />
+  </select>
+  <update id="updateByPrimaryKey" parameterType="com.k12.tc.schedule.domain.ScheduleJob" >
+    update schedule_job t
+    <set >
+      <if test="jobName != null" >
+        t.job_name = #{jobName,jdbcType=VARCHAR},
+      </if>
+      <if test="aliasName != null" >
+        t.alias_name = #{aliasName,jdbcType=VARCHAR},
+      </if>
+      <if test="jobGroup != null" >
+        t.job_group = #{jobGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="jobTrigger != null" >
+        t.job_trigger = #{jobTrigger,jdbcType=VARCHAR},
+      </if>
+      <if test="jobStatus != null" >
+        t.job_status = #{jobStatus,jdbcType=CHAR},
+      </if>
+      <if test="cronExpression != null" >
+        t.cron_expression = #{cronExpression,jdbcType=VARCHAR},
+      </if>
+      <if test="isSync != null" >
+        t.is_sync = #{isSync,jdbcType=CHAR},
+      </if>
+      <if test="serviceUrl != null" >
+        t.service_url = #{serviceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="submitMethod != null" >
+        t.submit_method = #{submitMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="isParam != null" >
+        t.is_param = #{isParam,jdbcType=CHAR},
+      </if>
+      <if test="serviceParam != null" >
+        t.service_param = #{serviceParam,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        t.description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        t.update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        t.create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where job_id = #{jobId,jdbcType=INTEGER}
+  </update>
+  
+  
+  <select id="getPage" resultMap="BaseResultMap">
+  	 select 
+      <include refid="Base_Column_List" />
+     from schedule_job t
+     <include refid="BASE_WHERE" />
+     limit #{startPage,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+  
+</mapper>

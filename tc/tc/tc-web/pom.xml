@@ -1,0 +1,48 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>tc-web</artifactId>
+	<packaging>war</packaging>
+	<parent>
+		<groupId>com.k12.tc</groupId>
+		<artifactId>tc-pom</artifactId>
+		<version>1.0.0</version>
+		<relativePath>../tc-pom/pom.xml</relativePath>
+	</parent>
+	<dependencies>
+		<dependency>
+			<groupId>com.k12.common</groupId>
+			<artifactId>common</artifactId>
+		</dependency>
+        <dependency>
+            <groupId>com.hongkun</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.3.0.2</version>
+        </dependency>
+    </dependencies>
+	<build>
+		<finalName>tc</finalName>
+		<filters>
+			<filter>src/main/resources/config/resource/${ENV}/config.properties</filter>
+		</filters>
+		<resources>
+			<resource>
+				<directory>src/main/resources/config/resource/${ENV}</directory>
+				<filtering>true</filtering>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<excludes>
+					<exclude>**/test/*.*</exclude>
+					<exclude>**/sit/*.*</exclude>
+					<exclude>**/staging/*.*</exclude>
+					<exclude>**/prd/*.*</exclude>
+				</excludes>
+			</resource>
+			<!-- <resource>
+				this is relative to the pom.xml directory
+				<directory>../webapp</directory>
+			</resource> -->
+		</resources>
+	</build>
+</project>

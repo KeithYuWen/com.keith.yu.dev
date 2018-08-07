@@ -1,0 +1,27 @@
+/* @font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Light'), local('OpenSans-Light'), url('../fonts/opensans/opensans-light-webfont.woff') format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url('../fonts/opensans/opensans-webfont.woff') format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url('../fonts/opensans/opensans-bold-webfont.woff') format('woff');
+} */
+@font-face {
+  font-size:12px;line-height:1.6;font-family:Tahoma, Arial, "Hiragino Sans GB", "simsun",sans-serif;height:100%;
+}
+@font-face {
+  font-size:12px;line-height:1.6;font-family:Tahoma, Arial, "Hiragino Sans GB", "simsun",sans-serif;height:100%;
+}
+@font-face {
+ font-size:12px;line-height:1.6;font-family:Tahoma, Arial, "Hiragino Sans GB", "simsun",sans-serif;height:100%;
+}
