@@ -12,7 +12,7 @@
 		<springframework-version>4.3.3.RELEASE</springframework-version>
 		<!-- 设置使用utf-8编码，而不是平台编码 -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<jackson.version>2.9.9.2</jackson.version>
+		<jackson.version>2.13.4.1</jackson.version>
 	</properties>
 
 	<dependencies>
