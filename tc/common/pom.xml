@@ -9,7 +9,7 @@
 	
 	<properties>
 		<project_version>1.0.0</project_version>
-		<springframework-version>4.3.3.RELEASE</springframework-version>
+		<springframework-version>5.2.20.RELEASE</springframework-version>
 		<!-- 设置使用utf-8编码，而不是平台编码 -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jackson.version>2.9.9.2</jackson.version>
